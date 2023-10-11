@@ -1,3 +1,11 @@
+function Location(name, currentCondition, currentTempC) {
+  this.name = name;
+  this.currentCondition = currentCondition;
+  this.currentTempC = currentTempC;
+}
+
+const searchBox = document.getElementById("searchInput");
+
 async function getData(location) {
   try {
     const response = await fetch(
@@ -7,13 +15,39 @@ async function getData(location) {
       { mode: "cors" }
     );
     const weatherData = await response.json();
-    let searchedLocation = Object;
+    const searchedLocation = new Location(
+      weatherData.location.name,
+      weatherData.current.condition.text,
+      weatherData.current.temp_c
+    );
+    console.log(weatherData);
     console.log(weatherData.location.name);
     console.log(weatherData.current.condition.text);
     console.log(weatherData.current.temp_c);
-    console.log(weatherData);
+    console.log(searchedLocation);
+    return searchedLocation;
   } catch (error) {
     console.log(error);
   }
 }
-getData("barcelona");
+
+// async function processData(weatherData) {
+//   console.log("from data P");
+//   await console.log(weatherData);
+// }
+// console.log(getData("sheffield"));
+//processData(searchedLocation);
+
+async function processData(location) {
+  let somedata = getData(location);
+  return somedata;
+}
+
+searchBox.addEventListener("keyup", ({ key }) => {
+  if (key === "Enter") {
+    console.log("enter pressed");
+    console.log(searchBox.value);
+    let x = processData(searchBox.value);
+    searchBox.value = "";
+  }
+});
