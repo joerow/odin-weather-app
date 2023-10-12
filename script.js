@@ -1,10 +1,13 @@
-function Location(name, currentCondition, currentTempC) {
-  this.name = name;
+function Location(city, currentCondition, currentTempC) {
+  this.city = city;
   this.currentCondition = currentCondition;
   this.currentTempC = currentTempC;
 }
 
 const searchBox = document.getElementById("searchInput");
+const city = document.getElementById("city");
+const currentCondition = document.getElementById("currentCondition");
+const temperature = document.getElementById("temperature");
 
 async function getData(location) {
   try {
@@ -25,6 +28,9 @@ async function getData(location) {
     console.log(weatherData.current.condition.text);
     console.log(weatherData.current.temp_c);
     console.log(searchedLocation);
+    city.textContent = weatherData.location.name;
+    currentCondition.textContent = weatherData.current.condition.text;
+    temperature.textContent = weatherData.current.temp_c;
     return searchedLocation;
   } catch (error) {
     console.log(error);
@@ -48,6 +54,7 @@ searchBox.addEventListener("keyup", ({ key }) => {
     console.log("enter pressed");
     console.log(searchBox.value);
     let x = processData(searchBox.value);
+    console.log(x);
     searchBox.value = "";
   }
 });
