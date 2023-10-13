@@ -8,6 +8,7 @@ const searchBox = document.getElementById("searchInput");
 const city = document.getElementById("city");
 const currentCondition = document.getElementById("currentCondition");
 const temperature = document.getElementById("temperature");
+const degsym = "\xB0";
 
 async function getData(location) {
   try {
@@ -28,9 +29,11 @@ async function getData(location) {
     console.log(weatherData.current.condition.text);
     console.log(weatherData.current.temp_c);
     console.log(searchedLocation);
-    city.textContent = weatherData.location.name;
-    currentCondition.textContent = weatherData.current.condition.text;
-    temperature.textContent = weatherData.current.temp_c;
+    city.textContent = "City: " + weatherData.location.name;
+    currentCondition.textContent =
+      "Currently: " + weatherData.current.condition.text;
+    temperature.textContent =
+      "Temperature: " + weatherData.current.temp_c + degsym + "C";
     return searchedLocation;
   } catch (error) {
     console.log(error);
