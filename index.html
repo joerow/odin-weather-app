@@ -7,12 +7,19 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div>Type a location then press enter</div>
-    <div><input type="text" name="searchInput"" id="searchInput" /></div>
-    <div id="loader" class="loader"></div>
-    <div id="city">City</div>
-    <div id="currentCondition">Current condition</div>
-    <div id="temperature">Temperature</div>
+    <div class="container">
+      <h1>WEATHER</h1>
+      <div id="hint">Type a location then press enter</div>
+      <div id="search">
+        <input type="text" name="searchInput"" id="searchInput" />
+      </div>
+      <div id="loader" class="loader"></div>
+      <div id="details">
+        <div id="city">City</div>
+        <div id="currentCondition">Current condition</div>
+        <div id="temperature">Temperature</div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

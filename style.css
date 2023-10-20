@@ -7,17 +7,25 @@
   --text-secondary: #141418;
   --transition-speed: 200ms ease;
 }
-
 body {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   align-items: center;
-  height: 100vh;
+  justify-content: center;
   margin: 0;
   padding-top: 3rem;
-  gap: 2rem;
+  gap: 0rem;
   overflow: hidden;
 }
 
@@ -43,6 +51,16 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+#details {
+  display: flex;
+  flex-direction: row;
 }
 
 #city {
