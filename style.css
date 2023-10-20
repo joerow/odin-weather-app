@@ -10,31 +10,40 @@
 body {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
-  height: 100vh;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
   background-color: var(--bg-secondary);
   color: var(--text-primary);
-  align-items: center;
-  justify-content: center;
   margin: 0;
   padding-top: 3rem;
   gap: 0rem;
+  height: 100vh;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 10rem 3rem max-content 5rem;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-items: center;
+  justify-items: center;
 }
 
-#loadNext {
-  margin: 1rem;
-  display: none;
+#banner {
+  grid-area: 1 / 1 / 2 / 4;
+  margin: 0;
+  padding: 0;
+}
+
+#search {
+  grid-area: 2 / 2 / 3 / 3;
 }
 
 .loader {
+  grid-area: 3 / 1 / 4 / 4;
   display: none;
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #424242; /* Blue */
@@ -53,22 +62,15 @@ body {
   }
 }
 
-h1 {
-  margin: 0;
-  padding: 0;
-}
-
-#details {
-  display: flex;
-  flex-direction: row;
-}
-
 #city {
   display: none;
+  grid-area: 4 / 1 / 5 / 2;
 }
 #currentCondition {
   display: none;
+  grid-area: 4 / 2 / 5 / 3;
 }
 #temperature {
   display: none;
+  grid-area: 4 / 3 / 5 / 4;
 }
