@@ -45,13 +45,6 @@ async function getData(location) {
   }
 }
 
-// async function processData(weatherData) {
-//   console.log("from data P");
-//   await console.log(weatherData);
-// }
-// console.log(getData("sheffield"));
-//processData(searchedLocation);
-
 async function processData(location) {
   let somedata = getData(location);
 
