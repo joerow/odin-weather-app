@@ -27,9 +27,6 @@ async function getData(location) {
       weatherData.current.temp_c
     );
     console.log(weatherData);
-    console.log(weatherData.location.name);
-    console.log(weatherData.current.condition.text);
-    console.log(weatherData.current.temp_c);
     console.log(searchedLocation);
     city.textContent = "City: " + weatherData.location.name;
     currentCondition.textContent =
