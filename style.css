@@ -25,10 +25,9 @@ body {
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 10rem 3rem max-content 5rem;
+  grid-template-rows: 5rem 3rem max-content 5rem;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  align-items: center;
   justify-items: center;
 }
 
@@ -62,15 +61,22 @@ body {
   }
 }
 
-#city {
-  display: none;
+#city-container {
   grid-area: 4 / 1 / 5 / 2;
 }
-#currentCondition {
-  display: none;
+#current-condition-container {
   grid-area: 4 / 2 / 5 / 3;
 }
-#temperature {
-  display: none;
+#temperature-container {
   grid-area: 4 / 3 / 5 / 4;
+}
+
+#city-container,
+#current-condition-container,
+#temperature-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  font-size: larger;
+  gap: 0.5rem;
 }

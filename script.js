@@ -5,8 +5,16 @@ function Location(city, currentCondition, currentTempC) {
 }
 
 const searchBox = document.getElementById("searchInput");
+const cityContainer = document.getElementById("city-container");
 const city = document.getElementById("city");
-const currentCondition = document.getElementById("currentCondition");
+const currentConditionContainer = document.getElementById(
+  "current-condition-container"
+);
+const currentCondition = document.getElementById("current-condition");
+const currentConditionImage = document.getElementById(
+  "current-condition-image"
+);
+const temperatureContainer = document.getElementById("temperature-container");
 const temperature = document.getElementById("temperature");
 const degsym = "\xB0";
 const loader = document.getElementById("loader");
@@ -28,17 +36,24 @@ async function getData(location) {
     );
     console.log(weatherData);
     console.log(searchedLocation);
-    city.textContent = "City: " + weatherData.location.name;
-    currentCondition.textContent =
-      "Currently: " + weatherData.current.condition.text;
-    temperature.textContent =
-      "Temperature: " + weatherData.current.temp_c + degsym + "C";
-    city.style.display = await "block";
-    currentCondition.style.display = await "block";
-    temperature.style.display = await "block";
+    city.textContent = weatherData.location.name;
+    currentCondition.textContent = weatherData.current.condition.text;
+    currentConditionImage.src = "https:" + weatherData.current.condition.icon;
+    console.log(weatherData.current.condition.icon);
+    temperature.textContent = weatherData.current.temp_c + degsym + "C";
+    cityContainer.style.display = await "flex";
+    currentConditionContainer.style.display = await "flex";
+    temperatureContainer.style.display = await "flex";
     return searchedLocation;
   } catch (error) {
-    console.log(error);
+    if (error.message === "weatherData.location is undefined") {
+      currentCondition.textContent = location + " not found";
+      currentConditionContainer.style.display = await "flex";
+    } else {
+      console.log(error);
+      console.log(error.message);
+      console.log(error.name);
+    }
   }
 }
 
@@ -53,9 +68,9 @@ searchBox.addEventListener("keyup", ({ key }) => {
     console.log("enter pressed");
     loader.style.display = "block";
     console.log(searchBox.value);
-    city.style.display = "none";
-    currentCondition.style.display = "none";
-    temperature.style.display = "none";
+    cityContainer.style.display = "none";
+    currentConditionContainer.style.display = "none";
+    temperatureContainer.style.display = "none";
     let x = processData(searchBox.value);
     console.log(x);
     searchBox.value = "";
